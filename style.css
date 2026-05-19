@@ -293,6 +293,11 @@ header
       color: #60a5fa;
     }
 
+    .nav-links li {
+  position: relative;
+  padding-right: 40px;
+}
+
     .subjects-section{
   max-width:1000px;
   margin:auto;
@@ -397,4 +402,16 @@ header
 
 .front-links:active {
   color: rgb(255, 0, 0);
+}
+
+.other-links {
+  text-align: left;
+  margin: 20px 0;
+  color: red;
+  background: #ffea00;
+}
+
+.other-links:hover {
+  background: #ff0000;
+  color: #ffea00;
 }
