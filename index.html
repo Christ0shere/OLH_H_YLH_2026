@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1ο Γυμνάσιο Πυλαίας - Πρόγραμμα Εξετάσεων 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700;900&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+      line-height: 1.5;
+      font-size: 1.05rem;
+    }
+
+    header {
+      background: #f4f6f8;
+      padding: 15px 10px;
+      text-align: center;
+      border-bottom: 1px solid #cbd5e1;
+    }
+
+    header h1 {
+      margin: 0 0 5px;
+      font-size: 1.4rem;
+      color: #005f5f;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    h1, h2, h3, h4 {
+      text-align: center;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #f8fafc;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .btn,
+    .link-btn,
+    .sample-button,
+    .info-button {
+      flex: 1 1 calc(33.333% - 10px);
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      background: #fff;
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      cursor: pointer;
+      transition: 0.2s;
+      font-weight: bold;
+    }
+
+    .btn:hover,
+    .link-btn:hover,
+    .sample-button:hover,
+    .info-button:hover {
+      background: #f1f5f9;
+    }
+
+    .presentation-btn {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
+    .warning-box {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 0.95em;
+      line-height: 1.6;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+    }
+
+    .exam-times,
+    .presentation-text {
+      text-align: center;
+      font-style: italic;
+    }
+
+    details {
+      background-color: #ffffff;
+      margin: 15px 0;
+      padding: 15px 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border-left: 6px solid #cbd5e1;
+    }
+
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .general { border-left-color: #64748b; }
+    .biology { border-left-color: #10b981; }
+    .physics { border-left-color: #8b5cf6; }
+    .math { border-left-color: #3b82f6; }
+    .history { border-left-color: #f59e0b; }
+    .ancient-greek { border-left-color: #e11d48; }
+    .modern-greek { border-left-color: #0ea5e9; }
+    .english { border-left-color: #14b8a6; }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #fff;
+      width: 90%;
+      max-width: 700px;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .close,
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: none;
+      background: #fee2e2;
+      color: #ef4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #64748b;
+      border-top: 1px solid #cbd5e1;
+    }
+
+    @media (max-width: 768px) {
+      .btn,
+      .link-btn,
+      .sample-button,
+      .info-button {
+        flex: 1 1 calc(50% - 10px);
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 1rem;
+      }
+
+      .container {
+        margin: 10px;
+        padding: 15px;
+      }
+
+      .btn,
+      .link-btn,
+      .sample-button,
+      .info-button {
+        flex: 1 1 100%;
+      }
+
+      th,
+      td {
+        font-size: 0.85rem;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="warning-box">ραχώνης χρήστος Β4</div>
+  <div class="warning-box">
+    <h1>
+      Η Ύλη ΟΛΩΝ ΤΩΝ ΜΑΘΗΜΑΤΩΝ είναι πιο κάτω.
+      ΤΕΡΜΑ ΚΑΤΩ είναι για ΟΛΑ ΤΑ ΜΑΘΗΜΑΤΑ ΑΚΡΙΒΩΣ ΤΙ ΘΑ ΠΕΣΕΙ ΣΤΙΣ ΕΞΕΤΑΣΕΙΣ.
+    </h1>
+  </div>
+
+  <h2>ΠΡΟΓΡΑΜΜΑ ΚΑΙ ΥΛΗ ΓΡΑΠΤΩΝ ΕΞΕΤΑΣΕΩΝ ΙΟΥΝΙΟΣ 2026</h2>
+  <h3>ΠΡΟΓΡΑΜΜΑ</h3>
+
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>Ημέρα/Ημ/νία</th>
+          <th>Αʼ Κύκλος</th>
+          <th>Βʼ Κύκλος</th>
+          <th>Γʼ Κύκλος</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Τρίτη<br>2-6-2026</td><td>Αρχαία & Ιλιάδα***</td><td>—</td><td>—</td></tr>
+        <tr><td>Τετάρτη<br>3-6-2026</td><td colspan="3">Πανελλαδικές</td></tr>
+        <tr><td>Πέμπτη<br>4-6-2026</td><td>Ιστορία</td><td>—</td><td>—</td></tr>
+        <tr><td>Παρασκευή<br>5-6-2026</td><td colspan="3">Πανελλαδικές</td></tr>
+        <tr><td>Δευτέρα<br>8-6-2026</td><td colspan="3">Πανελλαδικές</td></tr>
+        <tr><td>Τρίτη<br>9-6-2026</td><td>—</td><td>Βιολογία</td><td>—</td></tr>
+        <tr><td>Τετάρτη<br>10-6-2026</td><td>—</td><td>—</td><td>Αγγλικά</td></tr>
+        <tr><td>Πέμπτη<br>11-6-2026</td><td>Νεοελληνική γλώσσα & λογοτεχνία***</td><td>—</td><td>—</td></tr>
+        <tr><td>Παρασκευή<br>12-6-2026</td><td>Φυσική</td><td>—</td><td>—</td></tr>
+        <tr><td>Δευτέρα<br>15-6-2026</td><td>Μαθηματικά</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="exam-times">
+    <p>
+      <strong>
+        Αʼ Κύκλος: 8.10-10.10 (προσέλευση 8.00)<br>
+        Βʼ Κύκλος: 10.20-12.20 (προσέλευση 10.10)<br>
+        Γʼ Κύκλος: 12.30-14.30 (προσέλευση 12.10)<br>
+        ***Στις τρίωρες εξετάσεις: Αʼ 8.10-11.10, Βʼ 11.20-14.20
+      </strong>
+    </p>
+  </div>
+
+  <h1>ΥΛΗ</h1>
+
+  <div class="btn-group" data-group="B">
+    <div class="btn" data-subject="Αρχαία Πρωτότυπο">ΑΡΧΑΙΑ</div>
+    <div class="btn" data-subject="Αρχαία Λογοτεχνία">ΙΛΙΑΔΑ</div>
+    <div class="btn" data-subject="Νέα (Γλώσσα)">ΝΕΟΕΛΛΗΝΙΚΗ ΓΛΩΣΣΑ</div>
+    <div class="btn" data-subject="Νέα (Λογοτεχνία)">ΝΕΟΕΛΛΗΝΙΚΗ ΛΟΓΟΤΕΧΝΙΑ</div>
+    <div class="btn" data-subject="Ιστορία">ΙΣΤΟΡΙΑ</div>
+    <div class="btn" data-subject="Φυσική">ΦΥΣΙΚΗ</div>
+    <div class="btn" data-subject="Βιολογία">ΒΙΟΛΟΓΙΑ</div>
+    <div class="btn" data-subject="Μαθηματικά">ΜΑΘΗΜΑΤΙΚΑ</div>
+    <div class="btn" data-subject="Αγγλικά">ΑΓΓΛΙΚΑ</div>
+  </div>
+
+  <div class="warning-box">
+    <strong>!!!!!!!!!!!!!!!!!!!!!!!!</strong>
+    ΤΟ ΤΙ ΛΕΓΕΤΑΙ ΕΔΩ ΔΕΝ ΕΙΝΑΙ ΣΙΓΟΥΡΟ ΑΛΛΑ 99% ΠΙΘΑΝΟ ΝΑ ΙΣΧΥΕΙ.
+    <strong>!!!!!!!!!!!!!!!!!!!!!!!!</strong>
+  </div>
+
+  <details class="general">
+    <summary>ΓΕΝΙΚΕΣ ΠΛΗΡΟΦΟΡΙΕΣ ΑΠΟΛΥΤΗΡΙΩΝ ΚΑΙ ΠΡΟΑΓΩΓΙΚΩΝ ΕΞΕΤΑΣΕΩΝ</summary>
+    <p>
+      Σύμφωνα με την εκάστοτε εγκύκλιο του Υπουργείου το πρόγραμμα των προαγωγικών και απολυτηρίων εξετάσεων των μαθημάτων ορίζεται από τον Σύλλογο Διδασκόντων και ανακοινώνεται από τον/τη Διευθυντή/ντρια του Γυμνασίου στους μαθητές και τις μαθήτριες, συνήθως τρεις (3) τουλάχιστον ημέρες πριν από τη λήξη των μαθημάτων. Η ύλη των εξετάσεων θα δοθεί την τελευταία εβδομάδα και σε κάθε περίπτωση τουλάχιστον πέντε (5) ημέρες πριν την έναρξη των εξετάσεων σύμφωνα με τις κείμενες διατάξεις.
+
+Ο μαθητής / Η μαθήτρια κρίνεται άξιος/α προαγωγής ή απόλυσης, αα) όταν έχει σε κάθε μάθημα βαθμό ετήσιας επίδοσης τουλάχιστον δέκα (10) ή αβ) όταν έχει γενικό μέσο όρο βαθμών ετήσιας επίδοσης τουλάχιστον δεκατρία (13).
+
+β) Αν δεν πληρούνται οι παραπάνω προϋποθέσεις προαγωγής ή απόλυσης, ο μαθητής / η μαθήτρια παραπέμπεται το πρώτο δεκαήμερο του Σεπτεμβρίου, πριν την έναρξη των μαθημάτων του επόμενου σχολικού έτους, δηλαδή στη δεύτερη εξεταστική περίοδο, σε επαναληπτική εξέταση στα μαθήματα στα οποία ο βαθμός ετήσιας επίδοσής του/της είναι μικρότερος από δέκα (10), εφόσον ο αριθμός των μαθημάτων αυτών δεν υπερβαίνει τα τέσσερα (4).
+
+Αν δεν πληρούνται οι παραπάνω προϋποθέσεις προαγωγής ή απόλυσης και ο μαθητής / η μαθήτρια έχει βαθμό ετήσιας επίδοσης μικρότερο από δέκα (10) σε περισσότερα από τέσσερα (4) μαθήματα, τότε δεν κρίνεται άξιος/α προαγωγής ή απόλυσης, δεν παραπέμπεται σε επαναληπτική εξέταση και επαναλαμβάνει την τάξη.[…] Αν και μετά τις επαναληπτικές εξετάσεις μαθητής/τρια της Α΄ και Β΄ τάξης δεν κριθεί άξιος/α προαγωγής ή μαθητής/τρια της Γ΄ τάξης δεν κριθεί άξιος/α απόλυσης, σύμφωνα με την περ. α΄ της παρ. 4, επαναλαμβάνει την τάξη.
+    </p>
+  </details>
+
+  <details class="biology">
+    <summary>ΒΙΟΛΟΓΙΑ</summary>
+    <p>9 ΙΣΟΔΥΝΑΜΑ ΕΡΩΤΗΜΑΤΑ ΕΜΕΙΣ ΑΠΑΝΤΑΜΕ 6</p>
+  </details>
+
+  <details class="physics">
+    <summary>ΦΥΣΙΚΗ</summary>
+    <p>9 ΙΣΟΔΥΝΑΜΑ ΕΡΩΤΗΜΑΤΑ ΕΜΕΙΣ ΑΠΑΝΤΑΜΕ 6</p>
+  </details>
+
+  <details class="math">
+    <summary>ΜΑΘΗΜΑΤΙΚΑ</summary>
+    <p><strong>ΘΕΩΡΙΑ:</strong> ΑΠΑΝΤΑΜΕ 1 ΑΠΟ 2 ΘΕΜΑΤΑ ΘΕΩΡΙΑΣ. ΑΠΟ ΑΣΚΗΣΕΙΣ/ΠΡΟΒΛΗΜΑΤΑ 2 ΑΠΟ ΤΙΣ 3 ----- ΟΛΑ ΒΑΘΜΟΛΟΓΟΥΝΤΑΙ ΙΣΟΤΗΜΑ </p>
+  </details>
+
+  <details class="history">
+    <summary>ΙΣΤΟΡΙΑ</summary>
+
+    <p><strong>Α Μέρος:</strong> 5 ΙΣΟΔΥΝΑΜΑ ΕΡΩΤΗΜΑΤΑ - ΑΠΑΝΤΑΜΕ 3</p>
+    <p><strong>Β Μέρος:</strong> 4 ΙΣΟΔΥΝΑΜΑ ΕΡΩΤΗΜΑΤΑ - ΑΠΑΝΤΑΜΕ 2</p>
+
+    <button class="sample-button" onclick="window.open('https://drive.google.com/file/d/1314RSVUjXOGNPGbIn5WB-ZHZANasQW4K/view?usp=sharing', '_blank')">
+      Δείγμα
+    </button>
+
+    <button class="info-button" onclick="openHistoryModal()">
+      ΔΙΕΥΚΡΙΝΙΣΕΙΣ
+    </button>
+  </details>
+
+  <details class="ancient-greek">
+    <summary>ΑΡΧΑΙΑ & ΙΛΙΑΔΑ</summary>
+    <p><strong>Δύο μαθήματα, Διάρκεια εξέτασης 3 ώρες</strong>
+    
+
+        ΙΛΙΑΔΑ <BR>
+    ΜΑΣ ΔΙΝΟΥΝ ΚΕΙΜΕΝΟ ΠΟΥ ΞΕΡΟΥΜΕ (ΔΕΣ ΥΛΗ) 20-30 ΣΤΙΧΟΙ <BR>
+    ΠΡΩΤΟ ΘΕΜΑ ΚΑΤΑΝΟΗΣΗ ΚΕΙΜΕΝΟΥ 2 ΕΡΩΤΗΣΕΙΣ 4+4 8 ΜΟΝΑΔΕΣ
+ <BR> <BR>
+ΔΕΥΤΕΡΟ ΘΕΜΑ ΖΗΤΗΜΑΤΑ ΔΟΜΗΣ ΚΕΙΜΕΝΟΥ 3+3 6 ΜΟΝΑΔΕΣ
+ <BR> <BR>
+ΤΡΙΤΟ ΘΕΜΑ ΔΥΟ ΟΤΙ ΝΑΝΑΙ ΔΕΝ ΞΕΡΟΥΜΕ ΕΡΩΤΗΜΑΤΑ 3+3 6 ΜΟΝΑΔΕΣ <BR> <BR> <BR>ΑΡΧΑΙΑ ΓΛΩΣΣΑ <BR> <BR>ΕΞΕΤΑΖΟΜΑΣΤΕ ΣΕ ΚΕΙΜΕΝΟ ΠΟΥ ΞΕΡΟΥΜΕ (ΔΕΣ ΥΛΗ)
+
+ <BR>  <BR>
+ΠΡΩΤΟ ΘΕΜΑ: ΕΡΩΤΗΣΕΙΣ ΚΑΤΑΝΟΗΣΗΣ ΕΙΜΕΝΟΥ ΚΑΙ ΥΠΟΕΡΩΤΗΜΑΤΑ (4+4) 8 ΜΟΝΑΔΕΣ
+ <BR> <BR>
+ΔΕΥΤΕΡΟ ΘΘΕΜΑ ΑΦΟΡΑ ΛΕΞΙΛΟΓΙΟ ΚΑΙ ΓΡΑΜΜΑΤΙΚΟΣΥΝΤΑΚΤΙΚΗ ΔΟΜΗ ΤΟΥ ΚΕΙΜΕΝΟΥ. ΕΡΩΤΗΣΕΙΣ ΚΛΕΙΣΤΟΥ ΤΥΠΟΥ. ΛΟΓΙΚΑ ΟΙ ΑΛΛΕΣ 12 ΜΟΝΑΔΕΣ ΔΕΝ ΥΠΑΡΧΕΙ ΔΥΣΤΥΧΩΣ ΔΙΕΥΚΡΥΝΗΣΗ</p>
+  </details>
+
+  <details class="modern-greek">
+    <summary>ΓΛΩΣΣΑ & ΛΟΓΟΤΕΧΝΙΑ (ΝΕΑ/ΝΕΟΕΛΛΗΝΙΚΗ!!)</summary>
+    <p><strong>Δύο μαθήματα, Διάρκεια εξέτασης 3 ώρες <BR> <BR> <BR> <BR>
+    ΓΛΩΣΣΑ ΝΕΟΕΛΛΗΝΙΚΗ <BR> <BR>ΠΡΩΤΟ ΘΕΜΑ: ΚΑΤΑΝΟΗΣΗ ΚΕΙΜΕΝΟΥ 6 ΜΟΝΑΔΕΣ <BR> <BR>ΔΕΥΤΕΡΟ ΘΕΜΑ:
+    ΔΟΜΗ ΚΑΙ ΓΛΩΣΣΑ 4 ΜΟΝΑΔΕΣ <BR> <BR>ΤΡΙΤΟ ΘΕΜΑ: ΠΑΡΑΓΩΓΗ ΓΡΑΠΤΟΥ ΛΟΓΟΥ (200-300 ΛΕΞΕΙΣ) - 10 ΜΟΝΑΔΕΣ <BR> <BR> <BR> <BR>ΛΟΓΟΤΕΧΝΙΑ ΝΕΟΕΛΛΗΝΙΚΗ <BR> <BR>
+    ΠΡΩΤΟ ΘΕΜΑ : ΚΑΤΑΝΟΗΣΗ ΚΕΙΜΕΝΟΥ 6 ΜΟΝΑΔΕΣ
+ <BR> <BR>ΔΕΥΤΕΡΟ: ΔΟΜΗ ΚΑΙ ΓΛΩΣΣΑ 6 ΜΟΝΑΔΕΣ
+ <BR> <BR> ΤΡΙΤΟ: ΠΑΡΑΓΩΓΗ ΓΡΑΠΤΟΥ ΛΟΓΟΥ, ΑΝΤΑΠΟΚΡΙΣΗΣ, ΔΗΜΙΟΥΡΓΙΚΗΣ ΓΡΑΦΗΣ - 8 ΜΟΝΑΔΕΣ</strong></p>
+  </details>
+
+  <details class="english">
+    <summary>ΑΓΓΛΙΚΑ</summary>
+    <p>
+      ΕΞΕΤΑΖΟΜΑΣΤΕ ΜΕ ΒΑΣΗ ΤΟ ΕΠΙΠΕΔΟ ΚΑΙ ΟΧΙ ΤΟ ΒΙΒΛΙΟ. <BR> <BR>Β ΓΥΜΝ Α2+ Β1- <BR> <BR> <BR>ΚΑΤΑΝΟΗΣΗ ΓΡΑΠΤΟΥ ΛΟΓΟΥ - 8 ΜΟΝΑΔΕΣ <BR> <BR>ΚΑΤΑΝΟΗΗΣΗ ΠΡΟΦΟΡΙΚΟΥ ΛΟΓΟΥ (LISTENING) - 4 ΜΟΝΑΔΕΣ
+         <BR> <BR> ΠΑΡΑΓΩΓΗ ΓΡΑΠΤΟΥ ΛΟΓΟΥ & ΓΡΑΠΤΗΣ ΔΙΑΜΕΣΟΛΑΒΗΣΗΣ - 8 ΒΑΘΜΟΙ 
+    </p>
+
+    <button class="sample-button"
+      onclick="window.open('https://drive.google.com/file/d/1gzdiKxw3ds-lzOv8eZn1kEX-Ub7GTDu3/view?usp=sharing', '_blank')">
+      ΔΕΙΓΜΑ
+    </button>
+  </details>
+
+  <p class="presentation-text">
+    Στον παρακάτω σύνδεσμο θα βρείτε την παρουσίαση του Διευθυντή για τις εξετάσεις:
+  </p>
+
+  <a class="link-btn presentation-btn"
+     href="https://domvros-administration.github.io/exam-types/"
+     target="_blank">
+     Παρουσίαση Γραπτών Εξετάσεων
+  </a>
+
+</div>
+
+<!-- HISTORY MODAL -->
+<div id="historyModal" class="modal">
+  <div class="modal-content">
+    <button class="close-btn" onclick="closeHistoryModal()">×</button>
+    <h3>Διευκρινήσεις Ιστορίας</h3>
+
+    <p>Στην Α’ Ομάδα μπορεί να υπάρχουν ερωτήσεις:</p>
+
+    <ul>
+      <li>Ανάλυσης ιστορικών όρων</li>
+      <li>Αντιστοίχισης</li>
+      <li>Σωστού / Λάθους</li>
+      <li>Σύντομης ανάπτυξης</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SUBJECT MODAL -->
+<div id="subjectModal" class="modal">
+  <div class="modal-content">
+    <button class="close" id="modal-close">×</button>
+
+    <h4 id="modal-title"></h4>
+
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+
+  // HISTORY MODAL
+
+  const historyModal = document.getElementById('historyModal');
+
+  function openHistoryModal() {
+    historyModal.style.display = 'block';
+  }
+
+  function closeHistoryModal() {
+    historyModal.style.display = 'none';
+  }
+
+
+  // SUBJECT MODAL
+
+  const subjectModal = document.getElementById('subjectModal');
+  const titleEl = document.getElementById('modal-title');
+  const bodyEl = document.getElementById('modal-body');
+  const closeBtn = document.getElementById('modal-close');
+
+
+
+  const contentMap = {
+    'B|Αρχαία Πρωτότυπο': `
+  <h4>Ύλη Αρχαίων Ελληνικών</h4>
+
+  <h5>Κείμενα</h5>
+  <ul>
+    <li>Ενότητα 2Α (σελίδα 14-15)</li>
+    <li>Ενότητα 3Α (σελίδα 22-23)</li>
+    <li>Ενότητα 4Α (σελίδα 30-31)</li>
+    <li>Ενότητα 7Α (σελίδα 52-53)</li>
+    <li>Ενότητα 9Α (σελίδα 68-69)</li>
+  </ul>
+
+  <h5>Λεξιλόγιο - Ετυμολογικά</h5>
+  <ul>
+    <li>Ενότητα 2 Β1-Β2 (σελίδα 17-18)</li>
+    <li>Ενότητα 3 Β1-Β2 (σελίδα 24-25)</li>
+    <li>Ενότητα 6 Β1 (σελίδα 47)</li>
+    <li>Ενότητα 7 Β1 (σελίδα 54)</li>
+    <li>Ενότητα 9 Β1 (σελίδα 71-72)</li>
+  </ul>
+
+  <h5>Γραμματική</h5>
+  <ul>
+    <li>Γ΄ κλίση ουσιαστικών (σελίδα 95-96, 111) από το βιβλίο Α΄ Γυμνασίου</li>
+    <li>Γ΄ κλίση ουσιαστικών (σελίδα 19-20, 26-27)</li>
+    <li>Γ΄ κλίση επιθέτων (σελίδα 35, 49)</li>
+    <li>Αόριστη αντωνυμία (σελίδα 50)</li>
+    <li>Υποτακτική ενεργητικής φωνής (σελίδα 36, 42)</li>
+    <li>Υποτακτική μέσης φωνής (σελίδα 103)</li>
+    <li>Προστακτική ενεργητικής φωνής (σελίδα 88, 95)</li>
+    <li>Οριστική μέσης φωνής (σελίδα 112, 118, 124) από το βιβλίο Α΄ Γυμνασίου</li>
+    <li>Εκτός ύλης: Παρακείμενος και Υπερσυντέλικος αφωνόληκτων ρημάτων</li>
+    <li>Απαρέμφατο και μετοχή μέσης φωνής (σελίδα 131) από το βιβλίο Α΄ Γυμνασίου</li>
+  </ul>
+
+  <h5>Συντακτικό</h5>
+  <ul>
+    <li>Αντικείμενο άμεσο, έμμεσο (σελίδα 65)</li>
+    <li>Απαρέμφατο (ειδικό - τελικό) (σελίδα 104) από το βιβλίο Α΄ Γυμνασίου</li>
+    <li>Υποκείμενο απαρεμφάτου (ταυτοπροσωπία - ετεροπροσωπία) (σελίδα 132) από το βιβλίο Α΄ Γυμνασίου</li>
+  </ul>
+
+  <p><em>Διδάσκουσες:</em></p>
+  <ul>
+    <li>Αμοιραδάκη Αναστασία</li>
+    <li>Δελή Αγάπη</li>
+    <li>Μανδραλή Ειρήνη</li>
+  </ul>
+`,
+
+
+'B|Αρχαία Λογοτεχνία': `
+  <h4>Ομήρου Ιλιάδα - Εξεταστέα Ύλη</h4>
+
+  <h5>Εξεταστέες Ραψωδίες</h5>
+  <ul>
+    <li>Ραψωδία Α΄: στίχοι 1–306 και 494–612 (σελ. 18–32 & 40–45)</li>
+    <li>Ραψωδία Ζ΄: στίχοι 369–529 (σελ. 71–78)</li>
+    <li>Ραψωδία Π΄: στίχοι 684–867 (σελ. 112–118)</li>
+  </ul>
+
+  <p><em>Διδάσκουσες:</em></p>
+  <ul>
+    <li>Αμοιραδάκη Αναστασία</li>
+    <li>Βερεσόγλου Αικατερίνη</li>
+  </ul>
+`,
+
+'B|Νέα (Γλώσσα)': `
+  <h4>Ύλη Νεοελληνικής Γλώσσας Β΄ Γυμνασίου</h4>
+
+  <ul>
+    <li>1η ενότητα: Β, Γ (σελ. 15-19)</li>
+    <li>2η ενότητα: ολόκληρη - Α, Β, Γ, Δ, Ε, ΣΤ (σελ. 28-42)</li>
+    <li>3η ενότητα: ολόκληρη - Α, Β, Γ, Δ, Ε (σελ. 44-56)</li>
+    <li>4η ενότητα: Α, Β2, Β3, Δ, Ε (σελ. 58-61, 64-68, 70-72)</li>
+    <li>5η ενότητα: Α, Β, Γ, ΣΤ (σελ. 74-83, 86)</li>
+  </ul>
+
+  <p><em>Οι διδάσκουσες:</em></p>
+  <ul>
+    <li>Αμοιραδάκη Αναστασία</li>
+    <li>Δελή Αγάπη</li>
+    <li>Ντούμα Λευκοθέα</li>
+  </ul>
+`,
+
+'B|Νέα (Λογοτεχνία)': `
+  <h4>Νεοελληνικά Κείμενα Β΄ Γυμνασίου</h4>
+
+  <h5>Κείμενα</h5>
+  <ul>
+    <li>Ινδιάνος Σιάτλ, «Ένα παλιό μήνυμα για το σύγχρονο κόσμο», σελ. 19</li>
+    <li>Γιώργος Ιωάννου, «Να ’σαι καλά δάσκαλε», σελ. 32</li>
+    <li>Άννα Φρανκ, «Από το ημερολόγιο της Άννας Φρανκ», σελ. 48</li>
+    <li>Διονύσιος Σολωμός, «Η καταστροφή των Ψαρών», σελ. 79</li>
+    <li>Άντον Τσέχωφ, «Ένας αριθμός», σελ. 106</li>
+    <li>Δημοτικά τραγούδια της ξενιτιάς, «Θέλω να πα στην ξενιτιά», σελ. 126</li>
+    <li>Δημοτικά τραγούδια της ξενιτιάς, «Ξενιτεμένο μου πουλί», σελ. 127</li>
+    <li>Λορέντζος Μαβίλης, «Καλλιπάτειρα», σελ. 156</li>
+    <li>Γιάννης Μαγκλής, «Γιατί;», σελ. 170</li>
+    <li>Αντουάν ντε Σαιντ-Εξυπερύ, «Ο μικρός πρίγκηπας και η αλεπού», σελ. 184</li>
+  </ul>
+
+  <p><em>Οι διδάσκουσες:</em></p>
+  <ul>
+    <li>Αμοιραδάκη Αναστασία</li>
+    <li>Ντούμα Λευκοθέα</li>
+  </ul>
+`,
+
+'B|Ιστορία': `
+  <h4>Ύλη Ιστορίας Β΄ Γυμνασίου</h4>
+
+  <h5>Κεφάλαιο Πρώτο: Οι πρώτοι αιώνες του Βυζαντίου (330-717)</h5>
+  <ul>
+    <li>Ι. Η μετεξέλιξη του Ρωμαϊκού κράτους</li>
+    <li>Από τη Ρώμη στη Νέα Ρώμη</li>
+    <li>ΙΙ. Εξωτερικά προβλήματα και αναδιοργάνωση του κράτους</li>
+    <li>Ο Ιουστινιανός και το έργο του</li>
+    <li>Ο Ηράκλειος και η δυναστεία του (610-717): Εσωτερική μεταρρύθμιση και αγώνας επιβίωσης</li>
+  </ul>
+
+  <h5>Κεφάλαιο Τρίτο: Περίοδος της μεγάλης ακμής του Βυζαντίου (717-1025)</h5>
+  <ul>
+    <li>Ι. Παγίωση της Βυζαντινής κυριαρχίας στα Βαλκάνια και τη Μ. Ασία</li>
+    <li>Η διαμόρφωση της μεσαιωνικής ελληνικής βυζαντινής Αυτοκρατορίας</li>
+    <li>Η μεταβατική εποχή: Οι έριδες για το ζήτημα των εικόνων</li>
+    <li>Η βασιλεία του Μιχαήλ Γ΄ και η αυγή της Νέας Εποχής</li>
+    <li>ΙΙ. Κοινωνία και Οικονομία</li>
+    <li>Οι Εξελίξεις στην Οικονομία και την Κοινωνία</li>
+    <li>Η νομοθεσία της Μακεδονικής δυναστείας και η σύγκρουσή της με τους «Δυνατούς»</li>
+  </ul>
+
+  <h5>Κεφάλαιο Τέταρτο: Περίοδος της κρίσης του Βυζαντίου (1025-1453)</h5>
+  <ul>
+    <li>Ι. Η εξασθένηση του Βυζαντίου και το Σχίσμα με τη Δύση</li>
+    <li>Η κρίση και οι απώλειες της αυτοκρατορίας κατά τον 11ο αιώνα (1025-1081) (Μάχη του Ματζικερτ)</li>
+    <li>Οι Κομνηνοί και η μερική αναδιοργάνωση της αυτοκρατορίας</li>
+    <li>Η ενετική οικονομική διείσδυση και το σχίσμα των εκκλησιών</li>
+    <li>ΙΙ. Οι Σταυροφορίες και οι συνέπειές τους για το Βυζάντιο</li>
+    <li>Οι σταυροφορίες και η πρώτη άλωση της Πόλης</li>
+    <li>ΙΙΙ. Ανασύσταση του Βυζαντίου και υποταγή στους Οθωμανούς</li>
+    <li>Η άλωση της Πόλης</li>
+  </ul>
+
+  <h5>Κεφάλαιο Έκτο: Η μεσαιωνική Ευρώπη</h5>
+  <ul>
+    <li>Ο Καρλομάγνος και η εποχή του</li>
+  </ul>
+
+  <h5>Κεφάλαιο Έβδομο: Η Ευρώπη στους νεότερους χρόνους (15ος-18ος αι.)</h5>
+  <ul>
+    <li>Ι. Οι ανακατατάξεις στη μεταμεσαιωνική ευρωπαϊκή κοινωνία</li>
+    <li>Οι ανακαλύψεις</li>
+  </ul>
+`,
+
+'B|Φυσική': `
+  <h4>Ύλη Φυσικής Β΄ Γυμνασίου</h4>
+
+  <h5>Εντός ύλης</h5>
+  <ul>
+    <li>Κεφάλαιο 2: μόνο παράγραφος 2.2 (σελ. 29-30)</li>
+    <li>Κεφάλαιο 3: ολόκληρο (εκτός από σελ. 51 «δύναμη που ασκείται από τραχιά επιφάνεια», σελ. 52 «ανάλυση δύναμης και ανάλυση δύναμης σε κεκλιμένο επίπεδο», σελ. 58-59 «εφαρμογές»)</li>
+    <li>Κεφάλαιο 4: ολόκληρο εκτός από την παράγραφο 4.6 «πλεύση»</li>
+    <li>Κεφάλαιο 5: μόνο η εισαγωγή και η παράγραφος 5.1 (σελ. 88-92)</li>
+  </ul>
+
+  <h5>Σημαντικές διευκρινίσεις</h5>
+  <ul>
+    <li>Όλες οι ασκήσεις και ερωτήσεις από βιβλίο ή φυλλάδια που αντιστοιχούν στην παραπάνω ύλη θεωρούνται εντός ύλης</li>
+    <li>Μετατροπές μονάδων για όλα τα φυσικά μεγέθη: μήκος, μάζα, χρόνος, ταχύτητα, εμβαδόν, όγκος</li>
+    <li>Τύπος πυκνότητας και χρήση του</li>
+  </ul>
+
+  <h5>Εκτός ύλης</h5>
+  <ul>
+    <li>Κεφάλαιο 1</li>
+    <li>Κεφάλαιο 2 εκτός από την παράγραφο 2.2 (σελ. 29-30)</li>
+    <li>Κεφάλαιο 5 το υπόλοιπο εκτός της παραπάνω παραγράφου</li>
+  </ul>
+
+  <p><em>Εισηγήτρια: Αραπίδου Μαγδαληνή</em></p>
+`,
+
+'B|Βιολογία': `
+  <h4>Ύλη Βιολογίας Β΄ Γυμνασίου</h4>
+
+  <h5>Από το βιβλίο Α΄ και Β΄ Γυμνασίου</h5>
+  <ul>
+    <li><strong>Κεφάλαιο 5ο: Στήριξη και κίνηση</strong></li>
+    <li>5.3 Η στήριξη και η κίνηση στους ζωικούς οργανισμούς (μόνο σελ. 99 και 102)</li>
+    <li>5.4 Το μυοσκελετικό σύστημα του ανθρώπου (μόνο σελ. 106-107)</li>
+  </ul>
+
+  <ul>
+    <li><strong>Κεφάλαιο 6ο: Αναπαραγωγή</strong></li>
+    <li>Εισαγωγή</li>
+    <li>6.2 Η αναπαραγωγή στα φυτά (μόνο σελ. 116 και 117)</li>
+    <li>6.3 Η αναπαραγωγή στους ζωικούς οργανισμούς (μόνο σελ. 119)</li>
+    <li>6.4 Η αναπαραγωγή στον άνθρωπο (όλο, όχι τα ροζ ένθετα)</li>
+  </ul>
+
+  <h5>Από το βιβλίο Β΄ και Γ΄ Γυμνασίου</h5>
+  <ul>
+    <li><strong>Κεφάλαιο 1ο: Οργάνωση της ζωής - βιολογικά συστήματα</strong></li>
+    <li>1.2 Κύτταρο: η μονάδα της ζωής (από το τετράδιο)</li>
+  </ul>
+
+  <ul>
+    <li><strong>Κεφάλαιο 4ο: Οι ασθένειες και οι παράγοντες που σχετίζονται με την εμφάνισή τους</strong></li>
+    <li>4.1 Ομοιόσταση (ορισμός ομοιόστασης και παραδείγματα)</li>
+    <li>4.2 Ασθένειες (σελ. 78-80)</li>
+  </ul>
+
+  <p><em>Διδάσκουσα: Συροπούλου Ελεάνα</em></p>
+`,
+
+
+'B|Μαθηματικά': `
+  <h4>Ύλη Μαθηματικών Β΄ Γυμνασίου</h4>
+
+  <h5>Αʼ Μέρος – Άλγεβρα</h5>
+  <ul>
+    <li>Κεφάλαιο 1: 1.1, 1.2</li>
+    <li>Κεφάλαιο 2: 2.1, 2.2</li>
+  </ul>
+
+  <h5>Βʼ Μέρος – Γεωμετρία</h5>
+  <ul>
+    <li>Κεφάλαιο 1: 1.2, 1.3, 1.4</li>
+    <li>Κεφάλαιο 2: 2.1, 2.2</li>
+    <li>Κεφάλαιο 3: 3.1, 3.3, 3.5</li>
+  </ul>
+
+  <p><em>Διδάσκουσες:</em></p>
+  <ul>
+    <li>Κοκκίνη Ελένη</li>
+    <li>Μπόνου Σοφία</li>
+  </ul>
+`,
+
+'B|Αγγλικά': `
+  <h4>Ύλη Αγγλικών Β΄ Γυμνασίου</h4>
+
+  <h5>Student's Book (SB)</h5>
+  <ul>
+    <li>Unit 1-2 (έως lesson 5, σελ. 38)</li>
+  </ul>
+
+  <h5>Workbook (WB)</h5>
+  <ul>
+    <li>Unit 1-2 (έως lesson 5, σελ. 30)</li>
+  </ul>
+
+  <h5>Grammar</h5>
+  <ul>
+    <li>Simple Present</li>
+    <li>Present Continuous</li>
+    <li>Present Perfect</li>
+    <li>Simple Past</li>
+    <li>Past Continuous</li>
+    <li>Comparisons</li>
+  </ul>
+
+  <p><em>Διδάσκοντες/ουσες:</em></p>
+  <ul>
+    <li>Βασιλικού Φανή</li>
+    <li>Δόμβρος Παναγιώτης</li>
+  </ul>
+`,
+  
+  };
+
+
+  document.querySelectorAll('.btn').forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+      const subj = btn.dataset.subject;
+      const grp = btn.closest('.btn-group').dataset.group;
+
+      titleEl.textContent = `Τάξη ${grp} · ${subj}`;
+
+      bodyEl.innerHTML =
+        contentMap[`${grp}|${subj}`] ||
+        `<p>Το υλικό για το μάθημα "${subj}" θα προστεθεί σύντομα.</p>`;
+
+      subjectModal.style.display = 'block';
+    });
+  });
+
+
+  closeBtn.addEventListener('click', () => {
+    subjectModal.style.display = 'none';
+  });
+
+
+  window.addEventListener('click', (event) => {
+
+    if (event.target === subjectModal) {
+      subjectModal.style.display = 'none';
+    }
+
+    if (event.target === historyModal) {
+      historyModal.style.display = 'none';
+    }
+  });
+
+</script>
+
+</body>
+</html>
