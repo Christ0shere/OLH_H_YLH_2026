@@ -293,3 +293,87 @@ header
     .nav-links a:hover {
       color: #60a5fa;
     }
+
+    .subjects-section{
+  max-width:1000px;
+  margin:auto;
+}
+
+.subjects-section h1{
+  text-align:center;
+  margin-bottom:35px;
+  font-size:48px;
+}
+
+.subjects-container{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.subject-dropdown{
+  background:#1e293b;
+  border:1px solid #334155;
+  border-radius:16px;
+  overflow:hidden;
+  transition:0.3s;
+}
+
+.subject-dropdown:hover{
+  border-color:#60a5fa;
+}
+
+.subject-dropdown summary{
+  padding:22px;
+  cursor:pointer;
+  font-size:24px;
+  font-weight:bold;
+  list-style:none;
+  transition:0.3s;
+  user-select:none;
+}
+
+.subject-dropdown summary:hover{
+  background:#c6deff;
+}
+
+.subject-dropdown summary::-webkit-details-marker{
+  display:none;
+}
+
+.subject-content{
+  padding:28px;
+  background:#8090b0;
+  border-top:1px solid #334155;
+  line-height:1.9;
+}
+
+.subject-content h4{
+  color:#000000;
+  margin-bottom:18px;
+  font-size:28px;
+}
+
+.subject-content h5{
+  color:#000000;
+  margin-top:25px;
+  margin-bottom:12px;
+  font-size:20px;
+}
+
+.subject-content ul{
+  padding-left:25px;
+}
+
+.subject-content li{
+  margin-bottom:10px;
+}
+
+.subject-content p{
+  margin-top:20px;
+}
+
+
+.huge-text {
+  font-size: 3rem;
+}
